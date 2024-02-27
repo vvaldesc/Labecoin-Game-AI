@@ -3,7 +3,7 @@ Juego creado por @sorgazb en colabroación con @vvaldesc para la asignatura EASI
 
 actualmente en desarrollo 
 
-requisitos WIN: compilador MinGW paquete básico, toolchain y path MinGW y build y run config en modo MinGW. Run configuration: se debe marcar la aplicación .exe en /Debug después de compilar el proyecto.
+requisitos WIN: compilador MinGW paquete básico, toolchain, path MinGW, build y run config en modo MinGW. Run configuration: se debe marcar la aplicación .exe en /Debug después de compilar el proyecto.
 
 requisitos GNU: linux TOOLS como toolchain rama desarrollo
 
