@@ -33,9 +33,9 @@ void Coordenada::setJ(int j) {
 	this->j = j;
 }
 
-vector<int> Coordenada::toArray() {
+/*vector<int> Coordenada::toArray() {
 	return (this->i,this->j);
-}
+}*/
 
 
 Coordenada::~Coordenada() {
