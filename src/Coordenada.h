@@ -7,6 +7,10 @@
 
 #ifndef COORDENADA_H_
 #define COORDENADA_H_
+#include <string>
+#include <iostream>
+using namespace std;
+#include <vector>
 
 class Coordenada {
 	int i;
@@ -20,6 +24,8 @@ public:
 	void setI(int i);
 	int getJ() const;
 	void setJ(int j);
+	vector<int> toArray();
+
 
 	virtual ~Coordenada();
 };
