@@ -20,7 +20,7 @@ using namespace std;
 #include "FuncionDistancia.h"
 #include "FuncionRentabilidad.h"
 
-const int LIM=13;
+const int LIM=12;
 
 class Tablero {
 
