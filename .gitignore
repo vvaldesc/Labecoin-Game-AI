@@ -31,3 +31,6 @@
 *.out
 *.app
 /Debug/
+
+# Compiled Java files
+*.class
