@@ -181,7 +181,7 @@ void Tablero::moverIzquierda(int i, int j) {
 
 bool Tablero::sePuedeArriba(int i, int j) {
 	bool puede=true;
-	if(tableroJuego[i-1][j]==9){
+	if(tableroJuego[i-1][j]==9 || tableroJuego[i-1][j]==NULL){
 		puede=false;
 	}
 	return puede;
@@ -189,7 +189,7 @@ bool Tablero::sePuedeArriba(int i, int j) {
 
 bool Tablero::sePuedeAbajo(int i, int j) {
 	bool puede=true;
-	if(tableroJuego[i+1][j]==9){
+	if(tableroJuego[i+1][j]==9 || tableroJuego[i+1][j]==NULL){
 		puede=false;
 	}
 	return puede;
@@ -197,7 +197,7 @@ bool Tablero::sePuedeAbajo(int i, int j) {
 
 bool Tablero::sePuedeIzquierda(int i, int j) {
 	bool puede=true;
-	if(tableroJuego[i][j-1]==9){
+	if(tableroJuego[i][j-1]==9 || tableroJuego[i][j-1]==NULL){
 		puede=false;
 	}
 	return puede;
@@ -205,7 +205,7 @@ bool Tablero::sePuedeIzquierda(int i, int j) {
 
 bool Tablero::sePuedeDerecha(int i, int j) {
 	bool puede=true;
-	if(tableroJuego[i][j+1]==9){
+	if(tableroJuego[i][j+1]==9 || tableroJuego[i][j+1]==NULL){
 		puede=false;
 	}
 	return puede;

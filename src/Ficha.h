@@ -8,17 +8,33 @@
 #ifndef SRC_FICHA_H_
 #define SRC_FICHA_H_
 #include "Coordenada.h"
+#include <string>
+#include <vector>
+using namespace std;
+
 
 class Ficha {
 
 	Coordenada pos;
 
-public:
-	Ficha();
 
-	//Métodos
+public:
+
+	static const string movimientos [];
+
+	Ficha();
+	Ficha(Coordenada pos);
+
+	const Coordenada& getPos() const;
+	void setPos(const Coordenada &pos);
+
+	void moverArriba();
+	void moverAbajo();
+	void moverDerecha();
+	void moverIzquierda();
 
 	virtual ~Ficha();
+
 };
 
 #endif /* SRC_FICHA_H_ */

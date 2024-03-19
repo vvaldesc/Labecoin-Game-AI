@@ -24,7 +24,7 @@ public:
 	void setI(int i);
 	int getJ() const;
 	void setJ(int j);
-	vector<int> toArray();
+	//vector<int> toArray();
 
 
 	virtual ~Coordenada();
