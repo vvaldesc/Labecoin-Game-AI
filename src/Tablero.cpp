@@ -48,7 +48,10 @@ void Tablero::cargarTablero() {
 			}
 		}
 		flujoTablero.close();
+	}else{
+		cout<<"Error al abrir el archivo"<<endl;
 	}
+	
 }
 
 
