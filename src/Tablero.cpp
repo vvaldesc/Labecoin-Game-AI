@@ -22,7 +22,7 @@ void Tablero::cargarTablero() {
 	int eObjetivo;
 	int eValor;
 	ifstream flujoTablero;
-	flujoTablero.open("/config/games/"+nombreLaberinto);
+	flujoTablero.open("config/games/"+nombreLaberinto);
 	if(flujoTablero.is_open()){
 		getline(flujoTablero,objetivo);
 		eObjetivo = stoi(objetivo);
