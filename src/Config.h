@@ -4,20 +4,23 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <array>
 
 using namespace std;
 
 
 
-class Config {
+class Config{
 private:
     int velocidad;
     float sleep;
-
+    static const std::array<std::string, 4> MOVIMIENTOS;
     static int WINDOW_HEIGHT;
     static int WINDOW_WIDTH;
-    
-    public:
+    static int GAME_FPS;
+    static string GAME_TITLE;
+public:
+
     Config();
     Config(int velocidad, float sleep);
 
@@ -28,9 +31,12 @@ private:
 
     int getWindowHeight();
     int getWindowWidth();
+    int getFPS();
+    string getTitle();
 
 
     void readXml();
+    string toString();
     
     virtual ~Config();
 };

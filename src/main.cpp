@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 
-#include "Config.h"
-#include "Coordenada.h"
+
+#include "Labecoin.h"
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
@@ -15,19 +15,16 @@ int testAllegro(Config config);
 
 int main()
 {
-
+    
     try
     {
-        // CLASE CON TODA LA CONFIGURACION NECESARIA
-        Config config;
-        config.readXml();
-        cout << "Hola mundo" << endl;
 
-        // CLASE DE COORDENADAS
-        Coordenada coord = Coordenada(1, 2);
-        cout << coord.toString() << endl;
 
-        testAllegro(config);
+        Labecoin labecoin;
+        labecoin.init();
+
+
+        //testAllegro(config);
     }
     catch (const exception &e)
     {
@@ -84,7 +81,7 @@ int testAllegro(Config config)
         }
 
         // Clear the display
-        al_clear_to_color(al_map_rgb(0, 0, 0));
+        al_clear_to_color(al_map_rgb(0, 200, 0));
 
         // Draw something
         al_draw_filled_rectangle(100, 100, 200, 200, al_map_rgb(255, 0, 0));
