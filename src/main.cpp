@@ -1,5 +1,8 @@
 #include <iostream>
+#include <string>
+
 #include "Config.h"
+#include "Coordenada.h"
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
@@ -19,6 +22,11 @@ int main()
         Config config;
         config.readXml();
         cout << "Hola mundo" << endl;
+
+        // CLASE DE COORDENADAS
+        Coordenada coord = Coordenada(1, 2);
+        cout << coord.toString() << endl;
+
         testAllegro(config);
     }
     catch (const exception &e)

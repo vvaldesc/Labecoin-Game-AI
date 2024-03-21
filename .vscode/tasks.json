@@ -5,6 +5,7 @@
             "label": "C/C++: g++ compilar archivo activo",
             "command": "/usr/bin/g++",
             "args": [
+                "-g",
                 "-fdiagnostics-color=always",
                 "${workspaceFolder}/src/*.cpp",
                 "-o",
