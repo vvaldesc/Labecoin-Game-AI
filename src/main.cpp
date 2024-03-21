@@ -1,39 +1,80 @@
 #include <iostream>
 #include "Config.h"
-#include "constants.h"
-#include "Prueba.h"
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 
-
 using namespace std;
 
-int main() {
-    
-    Prueba p;
-    p.saludar();
-    Config config;
-    config.readXml();
-    cout << "Hola mundoe" << FAV_NUM << endl;
+int testAllegro(Config config);
 
-    // Initialize Allegro
-    al_init();
-    al_init_primitives_addon();
-    al_init_font_addon();
-    al_init_ttf_addon();
+int main()
+{
 
-    // Create a display
-    ALLEGRO_DISPLAY* display = al_create_display(800, 600);
-    if (!display) {
-        cerr << "Failed to create display!" << endl;
-        return 1;
+    try
+    {
+        // CLASE CON TODA LA CONFIGURACION NECESARIA
+        Config config;
+        config.readXml();
+        cout << "Hola mundo" << endl;
+        testAllegro(config);
+    }
+    catch (const exception &e)
+    {
+        cerr << e.what() << endl;
     }
 
+    return 0;
+}
+
+int testAllegro(Config config)
+{
+    // Initialize Allegro
+
+    al_init();
+    if (!al_init())
+    {
+        cerr << "Failed to initialize Allegro!" << endl;
+        throw runtime_error("Failed to initialize Allegro!");
+    }
+    al_init_primitives_addon();
+    al_init_ttf_addon();
+    al_init_font_addon();
+
+    // Create a display
+    ALLEGRO_DISPLAY *display = al_create_display(config.getWindowHeight(), config.getWindowWidth());
+    if (!display)
+    {
+        cerr << "Failed to create display!" << endl;
+        throw runtime_error("Failed to create display!");
+    }
+
+    // Create an event queue
+    ALLEGRO_EVENT_QUEUE *eventQueue = al_create_event_queue();
+    if (!eventQueue)
+    {
+        cerr << "Failed to create event queue!" << endl;
+        al_destroy_display(display);
+        throw runtime_error("Failed to create event queue!");
+    }
+
+    // Register display events
+    al_register_event_source(eventQueue, al_get_display_event_source(display));
+
     // Main loop
-    while (true) {
+    bool running = true;
+    while (running)
+    {
+        ALLEGRO_EVENT event;
+        al_wait_for_event(eventQueue, &event);
+
+        if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
+        {
+            running = false;
+        }
+
         // Clear the display
         al_clear_to_color(al_map_rgb(0, 0, 0));
 
@@ -44,9 +85,9 @@ int main() {
         al_flip_display();
     }
 
+    // Destroy the event queue
+    al_destroy_event_queue(eventQueue);
+
     // Destroy the display
     al_destroy_display(display);
-
-    return 0;
 }
-

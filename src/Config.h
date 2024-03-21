@@ -14,14 +14,21 @@ private:
     int velocidad;
     float sleep;
 
-public:
+    static int WINDOW_HEIGHT;
+    static int WINDOW_WIDTH;
+    
+    public:
     Config();
     Config(int velocidad, float sleep);
 
-    int getVelocidad() const;
+    int getVelocidad();
     void setVelocidad(int velocidad);
-    float getSleep() const;
+    float getSleep();
     void setSleep(float sleep);
+
+    int getWindowHeight();
+    int getWindowWidth();
+
 
     void readXml();
     

@@ -1,4 +1,9 @@
 #include "Config.h"
+#include "constants.h"
+using namespace std;
+
+int Config::WINDOW_HEIGHT = WINDOW_HEIGHT_LABECOIN;
+int Config::WINDOW_WIDTH = WINDOW_WIDTH_LABECOIN;
 
 Config::Config() {
     this->velocidad = 0;
@@ -6,18 +11,18 @@ Config::Config() {
 }
 
 void Config::readXml() {
-    std::ifstream file("config.xml");
-    std::string line;
+    ifstream file("config.xml");
+    string line;
 
     if (file.is_open()) {
         while (getline(file, line)) {
-            std::cout << line << std::endl;
+            cout << line << endl;
             //set velocidad
             //set sleep
         }
         file.close();
     } else {
-        std::cout << "Unable to open file" << std::endl;
+        cout << "Unable to open file" << endl;
     }
 }
 
@@ -30,7 +35,7 @@ Config::~Config() {
     // Destructor
 }
 
-int Config::getVelocidad() const {
+int Config::getVelocidad() {
     return velocidad;
 }
 
@@ -38,10 +43,18 @@ void Config::setVelocidad(int velocidad) {
     this->velocidad = velocidad;
 }
 
-float Config::getSleep() const {
+float Config::getSleep() {
     return sleep;
 }
 
 void Config::setSleep(float sleep) {
     this->sleep = sleep;
+}
+
+int Config::getWindowHeight() {
+    return WINDOW_HEIGHT;
+}
+
+int Config::getWindowWidth() {
+    return WINDOW_WIDTH;
 }
