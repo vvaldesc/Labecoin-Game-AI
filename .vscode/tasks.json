@@ -8,7 +8,13 @@
                 "-fdiagnostics-color=always",
                 "${workspaceFolder}/src/*.cpp",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-I/usr/include/allegro5",
+                "-L/usr/lib/x86_64-linux-gnu",
+                "-lallegro",
+                "-lallegro_primitives",
+                "-lallegro_font",
+                "-lallegro_ttf"
             ],
             "options": {
                 "cwd": "${fileDirname}"
