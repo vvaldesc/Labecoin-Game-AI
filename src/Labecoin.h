@@ -9,8 +9,9 @@
 class Labecoin
 {
 public:
-    void init();
     Labecoin();
+    void init();
+    void testAllegro(Config config); // Add the missing function definition
     ~Labecoin();
 
 private:
