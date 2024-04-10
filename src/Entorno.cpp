@@ -64,7 +64,7 @@ void Entorno::testAllegro(Config config)
 
 
         // Clear the display
-        al_clear_to_color(al_map_rgb(0, 200, 0));
+        al_clear_to_color(al_map_rgb(0, 0, 0));
 
         // Draw something
         al_draw_filled_rectangle(100, 100, 200, 200, al_map_rgb(255, 0, 0));
