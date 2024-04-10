@@ -14,7 +14,6 @@ int main()
     {
         Labecoin labecoin;
         labecoin.init();
-        //testAllegro(config);
     }
     catch (const exception &e)
     {

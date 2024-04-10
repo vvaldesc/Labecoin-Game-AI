@@ -18,7 +18,6 @@ class Ficha {
 
 	Coordenada pos;
 
-
 public:
 
 	static const string movimientos [];
