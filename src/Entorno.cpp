@@ -6,9 +6,33 @@
 #include <allegro5/allegro_ttf.h>
 
 
-Entorno::Entorno()
-{
+Entorno::Entorno(Config config)
+    : windowHeight(config.getWindowHeight()), 
+      windowWidth(config.getWindowWidth()), 
+      FPS(config.getFPS()), 
+      gameTitle(config.getTitle()) {}
 
+void Entorno::iniciarEntorno(){
+    al_init();
+    try
+    {
+        this->display = al_create_display(this->windowHeight, this->windowWidth);
+    }
+    catch(const std::exception& e)
+    {
+        cerr << e.what() << '\n';
+    }
+}
+
+void Entorno::cerrarEntorno(){
+    try
+    {
+        al_destroy_display(this->display);
+    }
+    catch(const std::exception& e)
+    {
+        cerr << e.what() << '\n';
+    }
 }
 
 void Entorno::testAllegro(Config config)
@@ -16,20 +40,17 @@ void Entorno::testAllegro(Config config)
     // Initialize Allegro
 
     al_init();
-
+    if (!al_init())
+    {
+        cerr << "Failed to initialize Allegro!" << endl;
+        throw runtime_error("Failed to initialize Allegro!");
+    }
 
     // Crea un temporizador que se dispara después de 5 segundos
     ALLEGRO_TIMER* timer = al_create_timer(5.0);
 
     // Inicia el temporizador
     al_start_timer(timer);
-
-
-    if (!al_init())
-    {
-        cerr << "Failed to initialize Allegro!" << endl;
-        throw runtime_error("Failed to initialize Allegro!");
-    }
 
     al_start_timer(timer);
     al_init_primitives_addon();

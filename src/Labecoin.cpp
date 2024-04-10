@@ -1,6 +1,7 @@
 #include "Labecoin.h"
 
 #include <thread>
+#include <unistd.h>
 
 Labecoin::Labecoin()
 {
@@ -17,23 +18,28 @@ void Labecoin::init()
 
     // CLASE DE COORDENADAS
     Coordenada coord = Coordenada(1, 2);
-    Entorno entorno = Entorno();
+    Entorno entorno = Entorno(config);
 
-    thread testAllegroThread([&]() {
+    /*thread testAllegroThread([&]() {
         entorno.testAllegro(config);
     });
 
-    thread monitorThread([&]() {
+    thread LabecoinThread([&]() {
         // Espera a que el hilo testAllegro termine
         testAllegroThread.join();
         // Imprime el mensaje
-        std::cout << "El proceso testAllegro ha finalizado." << std::endl;
-    });
+        cout << "El proceso testAllegro ha finalizado." << endl;
+
+    });*/
 
     // Espera a que el hilo de monitoreo termine
-    monitorThread.join();
+    //LabecoinThread.join();
 
-    cout << coord.toString() << endl;
+    entorno.testAllegro(config);
+    cout << "El proceso testAllegro ha finalizado." << endl;
+    entorno.iniciarEntorno();
+    sleep(3);
+    entorno.cerrarEntorno();
 }
 
 
