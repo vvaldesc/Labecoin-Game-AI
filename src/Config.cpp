@@ -70,11 +70,11 @@ int Config::getFPS() {
     return GAME_FPS;
 }
 
-string Config::toString() {
+string Config::getTitle() {
     return GAME_TITLE;
 }
 
-string Config::getTitle() {
+string Config::toString() {
     std::string result = "Config:\n";
     result += "Velocidad: " + std::to_string(this->getVelocidad()) + "\n";
     result += "Sleep: " + std::to_string(this->getSleep()) + "\n";

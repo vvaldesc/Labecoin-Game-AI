@@ -35,11 +35,16 @@ void Labecoin::init()
     // Espera a que el hilo de monitoreo termine
     //LabecoinThread.join();
 
-    entorno.testAllegro(config);
-    cout << "El proceso testAllegro ha finalizado." << endl;
+    /*entorno.testAllegro(config);
+    cout << "El proceso testAllegro ha finalizado." << endl;*/
+
     entorno.iniciarEntorno();
-    sleep(3);
+    sleep(2);
+    entorno.escribirTitulo();
+    sleep(2);
     entorno.cerrarEntorno();
+    //sleep(3);
+
 }
 
 

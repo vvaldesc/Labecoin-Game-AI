@@ -7,13 +7,16 @@
 
 
 Entorno::Entorno(Config config)
-    : windowHeight(config.getWindowHeight()), 
-      windowWidth(config.getWindowWidth()), 
-      FPS(config.getFPS()), 
-      gameTitle(config.getTitle()) {}
+        : windowHeight(config.getWindowHeight()), 
+            windowWidth(config.getWindowWidth()), 
+            FPS(config.getFPS()), 
+            gameTitle(config.getTitle().c_str()) {}
 
 void Entorno::iniciarEntorno(){
     al_init();
+    al_init_font_addon(); // Añade esta línea
+    al_init_ttf_addon();
+
     try
     {
         this->display = al_create_display(this->windowHeight, this->windowWidth);
@@ -28,11 +31,29 @@ void Entorno::cerrarEntorno(){
     try
     {
         al_destroy_display(this->display);
+        this->display = NULL;
     }
     catch(const std::exception& e)
     {
         cerr << e.what() << '\n';
     }
+}
+
+void Entorno::escribirTitulo()
+{
+    // Carga una fuente TTF
+    this->font = al_load_ttf_font("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 24, 0);
+    if (!this->font) {
+        cerr << "No se pudo cargar la fuente." << endl;
+        return;
+    }
+
+    // Dibuja el texto
+    al_set_target_backbuffer(this->display);
+    al_draw_text(this->font, al_map_rgb(255, 255, 255), this->windowWidth / 2, this->windowHeight / 2, ALLEGRO_ALIGN_CENTER, this->gameTitle);
+
+    // Voltea el display
+    al_flip_display();
 }
 
 void Entorno::testAllegro(Config config)
@@ -58,7 +79,7 @@ void Entorno::testAllegro(Config config)
     al_init_font_addon();
 
     // Create a display
-    ALLEGRO_DISPLAY *display = al_create_display(config.getWindowHeight(), config.getWindowWidth());
+    this->display = al_create_display(config.getWindowHeight(), config.getWindowWidth());
     if (!display)
     {
         cerr << "Failed to create display!" << endl;
